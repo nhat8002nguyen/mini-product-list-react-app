@@ -36,6 +36,7 @@ const ProductListPage: React.FC<ProductListProps> = () => {
         return data.products;
       } catch (error) {
         console.error('Error fetching products:', error);
+        alert("Something went wrong, please try again!")
         return [];
       }
     },
