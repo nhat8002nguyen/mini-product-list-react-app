@@ -1,20 +1,8 @@
+import { fetchProducts, Product } from '@src/api';
 import { debounce } from 'lodash';
 import React, { useCallback, useEffect, useState } from 'react';
 
-interface Product {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  images: string[];
-}
 
-interface Data {
-  limit: number;
-  products: Product[];
-  skip: number;
-  total: number;
-}
 
 interface ProductListProps { }
 
@@ -23,25 +11,6 @@ const ProductListPage: React.FC<ProductListProps> = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
-
-  const fetchProducts = useCallback(
-    async (page: number, search?: string): Promise<Product[]> => {
-      try {
-        const url = search
-          ? `https://dummyjson.com/products/search?q=${search}&limit=20&select=title,description,price,images&skip=${(page - 1) * 20}`
-          : `https://dummyjson.com/products?limit=20&select=title,description,price,images&skip=${(page - 1) * 20}`;
-
-        const response = await fetch(url);
-        const data: Data = await response.json();
-        return data.products;
-      } catch (error) {
-        console.error('Error fetching products:', error);
-        alert("Something went wrong, please try again!")
-        return [];
-      }
-    },
-    []
-  );
 
   const loadMoreProducts = useCallback(async (products: Product[], currentPage: number, searchTerm?: string) => {
     if (isLoading) return;
@@ -54,7 +23,7 @@ const ProductListPage: React.FC<ProductListProps> = () => {
     } finally {
       setIsLoading(false);
     }
-  }, [isLoading, fetchProducts]);
+  }, [isLoading]);
 
   const debouncedSearch = useCallback(debounce((term: string) => {
     loadMoreProducts([], 0, term);
@@ -74,7 +43,7 @@ const ProductListPage: React.FC<ProductListProps> = () => {
     };
 
     initialLoad();
-  }, [fetchProducts]);
+  }, []);
 
   const handleScroll = useCallback(() => {
     if (
