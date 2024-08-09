@@ -17,6 +17,7 @@ This component renders a paginated and searchable list of products fetched from 
 
 ### Key Features:
 Product Display: Presents products in a grid layout, showing product images, titles, prices, and brief descriptions.
+
 Search: Includes a search bar to filter products based on the user's input. The search is debounced to optimize performance.
 Pagination (Infinite Scrolling): Implements infinite scrolling, automatically fetching and appending the next set of products when the user nears the bottom of the page.
 Loading Indication: Displays a "Loading more products..." message while fetching additional products.
