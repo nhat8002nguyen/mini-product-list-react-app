@@ -9,6 +9,14 @@
   `$ yarn start`
 4. Visit the http://localhost:3000 to test this app.
 
+### How to test:
+- Scroll down to the end of the page to see new products appearing.
+
+- Input any keyword to the search input at the top left of the page.
+  
+![image](https://github.com/user-attachments/assets/cef1bd30-3024-4d7b-9ff5-1514923ce440)
+
+
 ## Description:
 Component Name: ProductListPage
 
