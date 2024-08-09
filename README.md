@@ -7,4 +7,4 @@
   `$ yarn install`
 3. Run the program:
   `$ yarn start`
-4. Visit the http//:localhost:3000 to test this app.
+4. Visit the http://localhost:3000 to test this app.
